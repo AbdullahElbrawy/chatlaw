@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "server.js", "use": "@vercel/node" },
+    { "src": "src/**", "use": "@vercel/static" },
+    { "src": "chat/**", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "server.js" },
+    { "src": "/(.*)", "dest": "src/$1" }
+  ],
+  "env": {
+    "MONGODB_URI": "mongodb+srv://sarga:A111a111@cluster0.fjdnf.mongodb.net/"
+  },
+   "build": {
+    "env": {
+      "CI": "true"
+    }
+    
+  }
+}
